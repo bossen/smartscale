@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <title>Stats</title>
+ 
+   <!-- import plugin script -->
+   <script src='static/Chart.min.js'></script>
+ 
+</head>
+<body>
+ 
+<h1>Stats</h1>
+<!-- bar chart canvas element -->
+<canvas id="myChart" width="400" height="200"></canvas>
+<script>
+var colors = ["#FF0000", "#00A08A", "#F2AD00", "#F98400", "#5BBCD6", "#E2D200"]
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [{% for item in values %}
+                  "{{item[6]}}",
+              {% endfor %}],
+        datasets: [
+          {% for field in types %}
+          {
+            {% set iteration = loop.index0 %}
+            label: "{{field}}",
+            data: [{% for item in values %}
+              {{item[iteration]}},
+                    {% endfor %}],
+            borderColor: colors[{{iteration}}],
+            backgroundColor: colors[{{iteration}}] + "22",
+          },
+          {% endfor %}
+        ]
+    }
+});
+</script>
+
+ 
+</body>
+</html>
