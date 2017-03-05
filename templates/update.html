@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Update{% endblock %}
+{% block content %}
+  {% from "_formhelpers.html" import render_field %}
+  <form id="update" method=post>
+    <dl>
+      {{ render_field(form.weight) }}
+      {{ render_field(form.fat) }}
+      {{ render_field(form.water) }}
+      {{ render_field(form.muscle) }}
+      {{ render_field(form.bonemass) }}
+      {{ render_field(form.calories) }}
+    </dl>
+    <input type=submit value=Send>
+  </form>
+{% endblock %}
+
