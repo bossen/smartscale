@@ -1,5 +1,5 @@
 {% macro render_field(field) %}
-  <dd>{{ field(type="number", required="required", placeholder=field.label.text) }}
+  <dd>{{ field(type="decimal", required="required", placeholder=field.label.text) }}
   {% if field.errors %}
     <ul class=errors>
     {% for error in field.errors %}

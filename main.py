@@ -2,15 +2,15 @@
 import os, gzip, StringIO, time, csv, datetime
 from flask import Flask, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
-from wtforms import Form, IntegerField, validators
+from wtforms import Form, DecimalField, validators
 
 class UpdateForm(Form):
-    weight = IntegerField('Weight', [validators.DataRequired()])
-    fat = IntegerField('Body fat', [validators.DataRequired()])
-    water = IntegerField('Body water', [validators.DataRequired()])
-    muscle = IntegerField('Muscle', [validators.DataRequired()])
-    bonemass = IntegerField('Bone mass', [validators.DataRequired()])
-    calories = IntegerField('Calories', [validators.DataRequired()])
+    weight = DecimalField('Weight', [validators.DataRequired()])
+    fat = DecimalField('Body fat', [validators.DataRequired()])
+    water = DecimalField('Body water', [validators.DataRequired()])
+    muscle = DecimalField('Muscle', [validators.DataRequired()])
+    bonemass = DecimalField('Bone mass', [validators.DataRequired()])
+    calories = DecimalField('Calories', [validators.DataRequired()])
 
 
 app = Flask(__name__)
